@@ -61,4 +61,51 @@
     return [self objectsAtIndexes:failingIndexes];
 }
 
+- (NSArray *)take:(NSUInteger)count {
+    
+    NSUInteger trimmedCount = count <= [self count] ? count : [self count];
+    
+    NSRange range;
+    range.location = 0;
+    range.length = trimmedCount;
+    
+    return [self subarrayWithRange:range];
+}
+
+- (NSArray *)last:(NSUInteger)count {
+    NSUInteger trimmedCount = count <= [self count] ? count : [self count];
+    
+    NSRange range;
+    range.location = [self count] - trimmedCount;
+    range.length = trimmedCount;
+    
+    return [self subarrayWithRange:range];
+}
+
+- (BOOL)all:(BOOL (^)(id))testBlock {
+    __block BOOL allObjectPassTest = YES;
+    
+    [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if (testBlock(obj) == NO) {
+            allObjectPassTest = NO;
+            *stop = YES;
+        }
+    }];
+    
+    return allObjectPassTest;
+}
+
+- (BOOL)any:(BOOL (^)(id))testBlock {
+    __block BOOL anyObjectPassesTest = NO;
+    
+    [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if (testBlock(obj) == YES) {
+            anyObjectPassesTest = YES;
+            *stop = YES;
+        }
+    }];
+    
+    return anyObjectPassesTest;
+}
+
 @end

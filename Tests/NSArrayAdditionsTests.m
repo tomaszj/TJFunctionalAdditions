@@ -89,6 +89,7 @@
     
     STAssertNotNil(result, @"Should not be nil");
     STAssertTrue([result isKindOfClass:[NSArray class]], @"Should have returned a NSArray instance");
+    STAssertTrue([result count] == 0, @"Array should be empty");
 }
 
 - (void)testIfMapExecutesForEachObject {
@@ -139,6 +140,7 @@
     
     STAssertNotNil(resultArray, @"Result should not be nil");
     STAssertTrue([resultArray isKindOfClass:[NSArray class]], @"Should be of type NSArray");
+    STAssertTrue([resultArray count] == 0, @"Array should be empty");
 }
 
 - (void)testIfFilterLeavesObjectsPassingTheTest {
@@ -188,6 +190,7 @@
     
     STAssertNotNil(resultArray, @"Result should not be nil");
     STAssertTrue([resultArray isKindOfClass:[NSArray class]], @"Should be of type NSArray");
+    STAssertTrue([resultArray count] == 0, @"Array should be empty");
 }
 
 - (void)testIfRejectLeavesObjectsFailingTheTest {
@@ -225,4 +228,228 @@
     STAssertFalse([resultArray containsObject:number2], @"Should have removed number 2");
     STAssertFalse([resultArray containsObject:number4], @"Should have removed number 4");
 }
+
+#pragma mark - - [NSArray take:] tests
+- (void)testIfTakeReturnsEmptyArrayOnEmptyArray {
+    NSArray *testArray = [NSArray new];
+    
+    id resultArray = [testArray take:3];
+    
+    STAssertNotNil(resultArray, @"Result should not be nil");
+    STAssertTrue([resultArray isKindOfClass:[NSArray class]], @"Should be of type NSArray");
+    STAssertTrue([resultArray count] == 0, @"Array should be empty");
+}
+
+- (void)testIfTakeReturnsFirstElement {
+    NSNumber *number1 = [NSNumber numberWithInt:1];
+    NSNumber *number2 = [NSNumber numberWithInt:2];
+    NSNumber *number3 = [NSNumber numberWithInt:3];
+    NSNumber *number4 = [NSNumber numberWithInt:4];
+    
+    NSArray *testArray = [NSArray arrayWithObjects:number1, number2, number3, number4, nil];
+    
+    NSArray *resultArray = [testArray take:1];
+    
+    STAssertEqualObjects(resultArray, [NSArray arrayWithObject:number1], @"Should contain the first element");
+}
+
+- (void)testIfTakeReturnsMultipleElements {
+    NSNumber *number1 = [NSNumber numberWithInt:1];
+    NSNumber *number2 = [NSNumber numberWithInt:2];
+    NSNumber *number3 = [NSNumber numberWithInt:3];
+    NSNumber *number4 = [NSNumber numberWithInt:4];
+    
+    NSArray *testArray = [NSArray arrayWithObjects:number1, number2, number3, number4, nil];
+    
+    NSArray *resultArray = [testArray take:2];
+    
+    NSArray *expectedArray = [NSArray arrayWithObjects:number1, number2, nil];
+    STAssertEqualObjects(resultArray, expectedArray, @"Should contain first two elements in proper order");
+}
+
+- (void)testIfTakeReturnsAllElements {
+    NSNumber *number1 = [NSNumber numberWithInt:1];
+    NSNumber *number2 = [NSNumber numberWithInt:2];
+    NSNumber *number3 = [NSNumber numberWithInt:3];
+    NSNumber *number4 = [NSNumber numberWithInt:4];
+    
+    NSArray *testArray = [NSArray arrayWithObjects:number1, number2, number3, number4, nil];
+    
+    NSArray *resultArray = [testArray take:5];
+    
+    STAssertEqualObjects(resultArray, testArray, @"Should contain all elements in proper order");
+}
+
+#pragma mark - - [NSArray last:] tests
+- (void)testIfLastReturnsEmptyArrayOnEmptyArray {
+    NSArray *testArray = [NSArray new];
+    
+    id resultArray = [testArray last:3];
+    
+    STAssertNotNil(resultArray, @"Result should not be nil");
+    STAssertTrue([resultArray isKindOfClass:[NSArray class]], @"Should be of type NSArray");
+}
+
+- (void)testIfLastReturnsLastElement {
+    NSNumber *number1 = [NSNumber numberWithInt:1];
+    NSNumber *number2 = [NSNumber numberWithInt:2];
+    NSNumber *number3 = [NSNumber numberWithInt:3];
+    NSNumber *number4 = [NSNumber numberWithInt:4];
+    
+    NSArray *testArray = [NSArray arrayWithObjects:number1, number2, number3, number4, nil];
+    
+    NSArray *resultArray = [testArray last:1];
+    
+    STAssertEqualObjects(resultArray, [NSArray arrayWithObject:number4], @"Should contain the last element");
+}
+
+- (void)testIfLastReturnsMultipleElements {
+    NSNumber *number1 = [NSNumber numberWithInt:1];
+    NSNumber *number2 = [NSNumber numberWithInt:2];
+    NSNumber *number3 = [NSNumber numberWithInt:3];
+    NSNumber *number4 = [NSNumber numberWithInt:4];
+    
+    NSArray *testArray = [NSArray arrayWithObjects:number1, number2, number3, number4, nil];
+    
+    NSArray *resultArray = [testArray last:2];
+    
+    NSArray *expectedArray = [NSArray arrayWithObjects:number3, number4, nil];
+    STAssertEqualObjects(resultArray, expectedArray, @"Should contain first two elements in proper order");
+}
+
+- (void)testIfLastReturnsAllElements {
+    NSNumber *number1 = [NSNumber numberWithInt:1];
+    NSNumber *number2 = [NSNumber numberWithInt:2];
+    NSNumber *number3 = [NSNumber numberWithInt:3];
+    NSNumber *number4 = [NSNumber numberWithInt:4];
+    
+    NSArray *testArray = [NSArray arrayWithObjects:number1, number2, number3, number4, nil];
+    
+    NSArray *resultArray = [testArray last:5];
+    
+    STAssertEqualObjects(resultArray, testArray, @"Should contain all elements in proper order");
+}
+#pragma mark - - [NSArray all:] tests
+- (void)testIfAllReturnsYesOnEmptyArray {
+    NSArray *testArray = [NSArray new];
+    
+    BOOL allObjectsPass = [testArray all:^BOOL(id element) {
+        return NO;
+    }];
+    
+    STAssertTrue(allObjectsPass, @"Test should be passing on empty array.");
+}
+
+- (void)testIfAllReturnsYesWithAllObjectsPassingTest {
+    NSNumber *number1 = [NSNumber numberWithInt:1];
+    NSNumber *number2 = [NSNumber numberWithInt:2];
+    NSNumber *number3 = [NSNumber numberWithInt:3];
+    NSNumber *number4 = [NSNumber numberWithInt:4];
+    
+    NSArray *testArray = [NSArray arrayWithObjects:number1, number2, number3, number4, nil];
+    
+    BOOL allElementsLessThan = [testArray all:^BOOL(id element) {
+        return [element intValue] < 10;
+    }];
+    
+    STAssertTrue(allElementsLessThan, @"Should have passed the test");
+}
+
+- (void)testIfAllReturnsNoWithSingleObjectFailingTest {
+    NSNumber *number1 = [NSNumber numberWithInt:1];
+    NSNumber *number2 = [NSNumber numberWithInt:2];
+    NSNumber *number3 = [NSNumber numberWithInt:30];
+    NSNumber *number4 = [NSNumber numberWithInt:4];
+    
+    NSArray *testArray = [NSArray arrayWithObjects:number1, number2, number3, number4, nil];
+    
+    BOOL allElementsLessThan = [testArray all:^BOOL(id element) {
+        return [element intValue] < 10;
+    }];
+    
+    STAssertFalse(allElementsLessThan, @"Should have failed the test");
+}
+
+- (void)testIfAllStopsExecutionUponFirstObjectFailingTest {
+    NSNumber *number1 = [NSNumber numberWithInt:1];
+    NSNumber *number2 = [NSNumber numberWithInt:20];
+    NSNumber *number3 = [NSNumber numberWithInt:30];
+    NSNumber *number4 = [NSNumber numberWithInt:4];
+    
+    NSArray *testArray = [NSArray arrayWithObjects:number1, number2, number3, number4, nil];
+    
+    NSMutableArray *checkedObjects = [NSMutableArray new];
+    
+    BOOL allElementsLessThan = [testArray all:^BOOL(id element) {
+        [checkedObjects addObject:element];
+        return [element intValue] < 10;
+    }];
+    
+    STAssertFalse(allElementsLessThan, @"Should have failed the test");
+    STAssertTrue([checkedObjects containsObject:number2], @"Should have tested the second number");
+    STAssertFalse([checkedObjects containsObject:number3], @"Should have not tested the third number");
+}
+
+#pragma mark - - [NSArray any:] tests
+- (void)testIfReturnsNoOnEmptyArray {
+    NSArray *testArray = [NSArray new];
+    
+    BOOL anyObjectPasses = [testArray any:^BOOL(id element) {
+        return YES;
+    }];
+    
+    STAssertFalse(anyObjectPasses, @"Should fail as there is no object passing the test");
+}
+
+- (void)testIfAnyReturnsNoWithAllObjectsFailingTest {
+    NSNumber *number1 = [NSNumber numberWithInt:1];
+    NSNumber *number2 = [NSNumber numberWithInt:2];
+    NSNumber *number3 = [NSNumber numberWithInt:3];
+    NSNumber *number4 = [NSNumber numberWithInt:4];
+    
+    NSArray *testArray = [NSArray arrayWithObjects:number1, number2, number3, number4, nil];
+    
+    BOOL anyElementGreaterThan = [testArray any:^BOOL(id element) {
+        return [element intValue] > 10;
+    }];
+    
+    STAssertFalse(anyElementGreaterThan, @"Should have failed the test");
+}
+
+- (void)testIfAnyReturnsYesWithSingleObjectPassingTest {
+    NSNumber *number1 = [NSNumber numberWithInt:1];
+    NSNumber *number2 = [NSNumber numberWithInt:2];
+    NSNumber *number3 = [NSNumber numberWithInt:30];
+    NSNumber *number4 = [NSNumber numberWithInt:4];
+    
+    NSArray *testArray = [NSArray arrayWithObjects:number1, number2, number3, number4, nil];
+    
+    BOOL anyElementGreaterThan = [testArray any:^BOOL(id element) {
+        return [element intValue] > 10;
+    }];
+    
+    STAssertTrue(anyElementGreaterThan, @"Should have passed the test");
+
+}
+
+- (void)testIfAnyStopsExecutionUponFirstObjectPassingTest {
+    NSNumber *number1 = [NSNumber numberWithInt:1];
+    NSNumber *number2 = [NSNumber numberWithInt:20];
+    NSNumber *number3 = [NSNumber numberWithInt:30];
+    NSNumber *number4 = [NSNumber numberWithInt:4];
+    
+    NSArray *testArray = [NSArray arrayWithObjects:number1, number2, number3, number4, nil];
+    
+    NSMutableArray *checkedObjects = [NSMutableArray new];
+    
+    BOOL anyElementGreaterThan = [testArray any:^BOOL(id element) {
+        [checkedObjects addObject:element];
+        return [element intValue] > 10;
+    }];
+    
+    STAssertTrue(anyElementGreaterThan, @"Should have passed the test");
+    STAssertTrue([checkedObjects containsObject:number2], @"Should have tested the second number");
+                  STAssertFalse([checkedObjects containsObject:number3], @"Should have not tested the third number");
+}
+
 @end

@@ -24,7 +24,9 @@
  *
  */
 
-
+/**
+ * Category adding typical functional constructs to NSArray class.
+ */
 @interface NSArray (TJFunctionalAdditions)
 
 /**
@@ -45,7 +47,7 @@
 /**
  * Returns an array of elements passing the test.
  *
- * @param test block to be executed for each element
+ * @param testBlock to be executed for each element
  * @return array of elements passing the test given
  */
 - (NSArray *)filter:(BOOL(^)(id element))testBlock;
@@ -53,10 +55,41 @@
 /**
  * Returns an array of elements removing those passing the test.
  *
- * @param test block to be executed for each element
+ * @param testBlock to be executed for each element
  * @return array of elements with those passing the test rejected
  */
 - (NSArray *)reject:(BOOL(^)(id element))testBlock;
 
+/**
+ * Returns first n elements of the array.
+ *
+ * @param count of elements to be taken
+ * @return array of first n elements. If count is greater than the length of an array, it returns all objects
+ */
+- (NSArray *)take:(NSUInteger)count;
+
+/**
+ * Returns last n elements of the array.
+ *
+ * @param count of elements to be taken
+ * @return array of last n elements. If count is greater than the length of an array, it returns all objects
+ */
+- (NSArray *)last:(NSUInteger)count;
+
+/**
+ * Checks if all array's elements pass the test.
+ *
+ * @param testBlock executed for each element
+ * @return YES if all elements pass the test
+ */
+- (BOOL)all:(BOOL(^)(id element))testBlock;
+
+/**
+ * Checks if any of array's elements passes the test.
+ *
+ * @param testBlock executed for each element
+ * @return YES if at least one element passes the test
+ */
+- (BOOL)any:(BOOL(^)(id element))testBlock;
 
 @end
