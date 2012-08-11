@@ -1,16 +1,35 @@
-//
-//  NSArrayAdditionsTests.m
-//  TJFunctionalAdditionsTests
-//
-//  Created by Tomasz Janeczko on 11.08.2012.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
+/**
+ * TJFunctionalAdditionsTests
+ *
+ * Created by Tomasz Janeczko 2012
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ */
 
 #import "NSArrayAdditionsTests.h"
 #import "NSArray+TJFunctionalAdditions.h"
 
 @implementation NSArrayAdditionsTests
 
+#pragma mark - - [NSArray each:] tests
 - (void)testIfEachDoesntExecuteWhenEmptyArray {
     __block int blockCount = 0;
     
@@ -57,6 +76,55 @@
     STAssertTrue(blockCount == 2, @"Should have executed the block twice.");
     STAssertTrue([testArray objectAtIndex:0] == testObject1, @"Should contain object 1");
     STAssertTrue([testArray objectAtIndex:1] == testObject2, @"Should contain object 1");
+}
+
+#pragma mark - - [NSArray filter:] tests
+
+- (void)testIfReturnsEmptyArrayOnEmptyArray {
+    NSArray *testArray = [NSArray new];
+    
+    id resultArray = [testArray filter:^BOOL(id element) {
+        return YES;
+    }];
+    
+    STAssertNotNil(resultArray, @"Result should not be nil");
+    STAssertTrue([resultArray isKindOfClass:[NSArray class]], @"Should be of type NSArray");
+}
+
+- (void)testIfLeavesObjectsPassingTheTest {
+    NSNumber *number1 = [NSNumber numberWithInt:1];
+    NSNumber *number2 = [NSNumber numberWithInt:2];
+    NSNumber *number3 = [NSNumber numberWithInt:3];
+    NSNumber *number4 = [NSNumber numberWithInt:4];
+    
+    NSArray *testArray = [NSArray arrayWithObjects:number1, number2, number3, number4, nil];
+    
+    NSArray *resultArray = [testArray filter:^BOOL(id element) {
+        return [element intValue] % 2 == 0;
+    }];
+    
+    STAssertTrue([resultArray containsObject:number2], @"Should have left number 2");
+    STAssertTrue([resultArray containsObject:number4], @"Should have left number 4");
+}
+
+- (void)testIfRemovesObjectsFailingTheTest {
+    NSNumber *number1 = [NSNumber numberWithInt:1];
+    NSNumber *number2 = [NSNumber numberWithInt:2];
+    NSNumber *number3 = [NSNumber numberWithInt:3];
+    NSNumber *number4 = [NSNumber numberWithInt:4];
+    
+    NSArray *testArray = [NSArray arrayWithObjects:number1, number2, number3, number4, nil];
+    
+    NSArray *resultArray = [testArray filter:^BOOL(id element) {
+        return [element intValue] % 2 == 0;
+    }];
+    
+    STAssertTrue([resultArray containsObject:number2], @"Should have left number 2");
+    STAssertTrue([resultArray containsObject:number4], @"Should have left number 4");
+    STAssertTrue([testArray count] == 2, @"Should have reduced the number of elements");
+
+    STAssertFalse([resultArray containsObject:number1], @"Should have removed number 1");
+    STAssertFalse([resultArray containsObject:number3], @"Should have removed number 3");
 }
 
 @end
