@@ -35,6 +35,14 @@
 - (void)each:(void(^)(id element))block;
 
 /**
+ * Returns an array of elements, each processed by the block given.
+ *
+ * @param block which processes each object
+ * @return array of processed elements
+ */
+- (NSArray *)map:(id(^)(id element))block;
+
+/**
  * Returns an array of elements passing the test.
  *
  * @param test block to be executed for each element

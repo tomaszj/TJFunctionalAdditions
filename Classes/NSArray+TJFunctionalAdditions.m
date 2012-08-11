@@ -34,6 +34,17 @@
     }];
 }
 
+- (NSArray *)map:(id(^)(id element))block {
+    NSMutableArray *resultArray = [NSMutableArray new];
+    
+    [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        id processedObject = block(obj);
+        [resultArray addObject:processedObject];
+    }];
+    
+    return resultArray;
+}
+
 - (NSArray *)filter:(BOOL(^)(id element))testBlock {
     NSIndexSet *passingIndexes = [self indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
         return testBlock(obj);

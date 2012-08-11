@@ -78,6 +78,56 @@
     STAssertTrue([testArray objectAtIndex:1] == testObject2, @"Should contain object 1");
 }
 
+#pragma mark - - [NSArray map:] tests
+
+- (void)testIfMapReturnsAnEmptyArrayOnEmptyArray {
+    NSArray *testArray = [NSArray new];
+    
+    id result = [testArray map:^id(id element) {
+        return element;
+    }];
+    
+    STAssertNotNil(result, @"Should not be nil");
+    STAssertTrue([result isKindOfClass:[NSArray class]], @"Should have returned a NSArray instance");
+}
+
+- (void)testIfMapExecutesForEachObject {
+    NSArray *testArray = [NSArray arrayWithObjects:@"1", @"2", @"3", @"4", @"5", nil];
+    
+    NSMutableArray *executedObjects = [NSMutableArray new];
+    
+    [testArray map:^id(id element) {
+        [executedObjects addObject:element];
+        return element;
+    }];
+    
+    STAssertEqualObjects(testArray, executedObjects, @"Arrays should be equal");
+}
+
+- (void)testIfProcessesObjects {
+    NSNumber *number1 = [NSNumber numberWithInt:1];
+    NSNumber *number2 = [NSNumber numberWithInt:2];
+    NSNumber *number3 = [NSNumber numberWithInt:3];
+    NSNumber *number4 = [NSNumber numberWithInt:4];
+    
+    NSArray *testArray = [NSArray arrayWithObjects:number1, number2, number3, number4, nil];
+
+    NSNumber *result1 = [NSNumber numberWithInt:1];
+    NSNumber *result2 = [NSNumber numberWithInt:4];
+    NSNumber *result3 = [NSNumber numberWithInt:9];
+    NSNumber *result4 = [NSNumber numberWithInt:16];
+    
+    NSArray *expectedArray = [NSArray arrayWithObjects:result1, result2, result3, result4, nil];
+    
+    NSArray *resultArray = [testArray map:^id(id element) {
+        int value = [element intValue];
+        int squaredValue = value * value;
+        return [NSNumber numberWithInt:squaredValue];
+    }];
+
+    STAssertEqualObjects(resultArray, expectedArray, @"Arrays should be the same");
+}
+
 #pragma mark - - [NSArray filter:] tests
 
 - (void)testIfFilterReturnsEmptyArrayOnEmptyArray {
