@@ -12,6 +12,7 @@
 		B35A77EC15D6982D0097BF64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35A77EB15D6982D0097BF64 /* Foundation.framework */; };
 		B35A780815D699030097BF64 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B35A780215D699030097BF64 /* InfoPlist.strings */; };
 		B35A780E15D699EA0097BF64 /* NSArray+TJFunctionalAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B35A780D15D699EA0097BF64 /* NSArray+TJFunctionalAdditions.m */; };
+		B35A781215D69BEE0097BF64 /* NSArrayAdditionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B35A781115D69BEE0097BF64 /* NSArrayAdditionsTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,8 @@
 		B35A780515D699030097BF64 /* TJFunctionalAdditionsTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TJFunctionalAdditionsTests-Prefix.pch"; sourceTree = "<group>"; };
 		B35A780C15D699EA0097BF64 /* NSArray+TJFunctionalAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+TJFunctionalAdditions.h"; path = "Classes/NSArray+TJFunctionalAdditions.h"; sourceTree = "<group>"; };
 		B35A780D15D699EA0097BF64 /* NSArray+TJFunctionalAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+TJFunctionalAdditions.m"; path = "Classes/NSArray+TJFunctionalAdditions.m"; sourceTree = "<group>"; };
+		B35A781015D69BEE0097BF64 /* NSArrayAdditionsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArrayAdditionsTests.h; sourceTree = "<group>"; };
+		B35A781115D69BEE0097BF64 /* NSArrayAdditionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArrayAdditionsTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +75,8 @@
 			isa = PBXGroup;
 			children = (
 				B35A780B15D6995C0097BF64 /* Support Files */,
+				B35A781015D69BEE0097BF64 /* NSArrayAdditionsTests.h */,
+				B35A781115D69BEE0097BF64 /* NSArrayAdditionsTests.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -174,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B35A780E15D699EA0097BF64 /* NSArray+TJFunctionalAdditions.m in Sources */,
+				B35A781215D69BEE0097BF64 /* NSArrayAdditionsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
