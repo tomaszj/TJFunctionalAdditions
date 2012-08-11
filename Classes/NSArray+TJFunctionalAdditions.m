@@ -42,4 +42,12 @@
     return [self objectsAtIndexes:passingIndexes];
 }
 
+- (NSArray *)reject:(BOOL(^)(id element))testBlock {
+    NSIndexSet *failingIndexes = [self indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        return !testBlock(obj);
+    }];
+    
+    return [self objectsAtIndexes:failingIndexes];
+}
+
 @end

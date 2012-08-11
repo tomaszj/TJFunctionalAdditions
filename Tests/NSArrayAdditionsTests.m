@@ -80,7 +80,7 @@
 
 #pragma mark - - [NSArray filter:] tests
 
-- (void)testIfReturnsEmptyArrayOnEmptyArray {
+- (void)testIfFilterReturnsEmptyArrayOnEmptyArray {
     NSArray *testArray = [NSArray new];
     
     id resultArray = [testArray filter:^BOOL(id element) {
@@ -91,7 +91,7 @@
     STAssertTrue([resultArray isKindOfClass:[NSArray class]], @"Should be of type NSArray");
 }
 
-- (void)testIfLeavesObjectsPassingTheTest {
+- (void)testIfFilterLeavesObjectsPassingTheTest {
     NSNumber *number1 = [NSNumber numberWithInt:1];
     NSNumber *number2 = [NSNumber numberWithInt:2];
     NSNumber *number3 = [NSNumber numberWithInt:3];
@@ -107,7 +107,7 @@
     STAssertTrue([resultArray containsObject:number4], @"Should have left number 4");
 }
 
-- (void)testIfRemovesObjectsFailingTheTest {
+- (void)testIfFilterRemovesObjectsFailingTheTest {
     NSNumber *number1 = [NSNumber numberWithInt:1];
     NSNumber *number2 = [NSNumber numberWithInt:2];
     NSNumber *number3 = [NSNumber numberWithInt:3];
@@ -121,10 +121,58 @@
     
     STAssertTrue([resultArray containsObject:number2], @"Should have left number 2");
     STAssertTrue([resultArray containsObject:number4], @"Should have left number 4");
-    STAssertTrue([testArray count] == 2, @"Should have reduced the number of elements");
+    STAssertTrue([resultArray count] == 2, @"Should have reduced the number of elements");
 
     STAssertFalse([resultArray containsObject:number1], @"Should have removed number 1");
     STAssertFalse([resultArray containsObject:number3], @"Should have removed number 3");
 }
 
+#pragma mark - - [NSArray reject:] tests
+
+- (void)testIfRejectReturnsEmptyArrayOnEmptyArray {
+    NSArray *testArray = [NSArray new];
+    
+    id resultArray = [testArray reject:^BOOL(id element) {
+        return YES;
+    }];
+    
+    STAssertNotNil(resultArray, @"Result should not be nil");
+    STAssertTrue([resultArray isKindOfClass:[NSArray class]], @"Should be of type NSArray");
+}
+
+- (void)testIfRejectLeavesObjectsFailingTheTest {
+    NSNumber *number1 = [NSNumber numberWithInt:1];
+    NSNumber *number2 = [NSNumber numberWithInt:2];
+    NSNumber *number3 = [NSNumber numberWithInt:3];
+    NSNumber *number4 = [NSNumber numberWithInt:4];
+    
+    NSArray *testArray = [NSArray arrayWithObjects:number1, number2, number3, number4, nil];
+    
+    NSArray *resultArray = [testArray reject:^BOOL(id element) {
+        return [element intValue] % 2 == 0;
+    }];
+    
+    STAssertTrue([resultArray containsObject:number1], @"Should have left number 1");
+    STAssertTrue([resultArray containsObject:number3], @"Should have left number 3");
+}
+
+- (void)testIfRejectRemovesObjectsPassingTheTest {
+    NSNumber *number1 = [NSNumber numberWithInt:1];
+    NSNumber *number2 = [NSNumber numberWithInt:2];
+    NSNumber *number3 = [NSNumber numberWithInt:3];
+    NSNumber *number4 = [NSNumber numberWithInt:4];
+    
+    NSArray *testArray = [NSArray arrayWithObjects:number1, number2, number3, number4, nil];
+    
+    NSArray *resultArray = [testArray reject:^BOOL(id element) {
+        return [element intValue] % 2 == 0;
+    }];
+    
+    STAssertTrue([resultArray containsObject:number1], @"Should have left number 1");
+    STAssertTrue([resultArray containsObject:number3], @"Should have left number 3");
+    STAssertTrue([resultArray count] == 2, @"Should have reduced the number of elements");
+    
+    STAssertFalse([resultArray containsObject:number2], @"Should have removed number 2");
+    STAssertFalse([resultArray containsObject:number4], @"Should have removed number 4");
+}
 @end

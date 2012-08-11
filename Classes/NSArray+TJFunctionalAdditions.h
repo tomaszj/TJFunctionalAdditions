@@ -42,4 +42,13 @@
  */
 - (NSArray *)filter:(BOOL(^)(id element))testBlock;
 
+/**
+ * Returns an array of elements removing those passing the test.
+ *
+ * @param test block to be executed for each element
+ * @return array of elements with those passing the test rejected
+ */
+- (NSArray *)reject:(BOOL(^)(id element))testBlock;
+
+
 @end
