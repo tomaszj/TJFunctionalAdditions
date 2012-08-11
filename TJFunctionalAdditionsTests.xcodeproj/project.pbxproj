@@ -1,0 +1,290 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B35A77E815D6982D0097BF64 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35A77E715D6982D0097BF64 /* SenTestingKit.framework */; };
+		B35A77EA15D6982D0097BF64 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35A77E915D6982D0097BF64 /* UIKit.framework */; };
+		B35A77EC15D6982D0097BF64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35A77EB15D6982D0097BF64 /* Foundation.framework */; };
+		B35A780815D699030097BF64 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B35A780215D699030097BF64 /* InfoPlist.strings */; };
+		B35A780E15D699EA0097BF64 /* NSArray+TJFunctionalAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B35A780D15D699EA0097BF64 /* NSArray+TJFunctionalAdditions.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B35A77E415D6982D0097BF64 /* TJFunctionalAdditionsTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TJFunctionalAdditionsTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B35A77E715D6982D0097BF64 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		B35A77E915D6982D0097BF64 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		B35A77EB15D6982D0097BF64 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		B35A780315D699030097BF64 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B35A780415D699030097BF64 /* TJFunctionalAdditionsTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TJFunctionalAdditionsTests-Info.plist"; sourceTree = "<group>"; };
+		B35A780515D699030097BF64 /* TJFunctionalAdditionsTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TJFunctionalAdditionsTests-Prefix.pch"; sourceTree = "<group>"; };
+		B35A780C15D699EA0097BF64 /* NSArray+TJFunctionalAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+TJFunctionalAdditions.h"; path = "Classes/NSArray+TJFunctionalAdditions.h"; sourceTree = "<group>"; };
+		B35A780D15D699EA0097BF64 /* NSArray+TJFunctionalAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+TJFunctionalAdditions.m"; path = "Classes/NSArray+TJFunctionalAdditions.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B35A77E015D6982D0097BF64 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B35A77E815D6982D0097BF64 /* SenTestingKit.framework in Frameworks */,
+				B35A77EA15D6982D0097BF64 /* UIKit.framework in Frameworks */,
+				B35A77EC15D6982D0097BF64 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B35A77D615D697F20097BF64 = {
+			isa = PBXGroup;
+			children = (
+				B35A780F15D699EF0097BF64 /* Classes */,
+				B35A780115D699030097BF64 /* Tests */,
+				B35A77E615D6982D0097BF64 /* Frameworks */,
+				B35A77E515D6982D0097BF64 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B35A77E515D6982D0097BF64 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B35A77E415D6982D0097BF64 /* TJFunctionalAdditionsTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B35A77E615D6982D0097BF64 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B35A77E715D6982D0097BF64 /* SenTestingKit.framework */,
+				B35A77E915D6982D0097BF64 /* UIKit.framework */,
+				B35A77EB15D6982D0097BF64 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B35A780115D699030097BF64 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				B35A780B15D6995C0097BF64 /* Support Files */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		B35A780B15D6995C0097BF64 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B35A780215D699030097BF64 /* InfoPlist.strings */,
+				B35A780415D699030097BF64 /* TJFunctionalAdditionsTests-Info.plist */,
+				B35A780515D699030097BF64 /* TJFunctionalAdditionsTests-Prefix.pch */,
+			);
+			name = "Support Files";
+			sourceTree = "<group>";
+		};
+		B35A780F15D699EF0097BF64 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B35A780C15D699EA0097BF64 /* NSArray+TJFunctionalAdditions.h */,
+				B35A780D15D699EA0097BF64 /* NSArray+TJFunctionalAdditions.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B35A77E315D6982D0097BF64 /* TJFunctionalAdditionsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B35A77F715D6982E0097BF64 /* Build configuration list for PBXNativeTarget "TJFunctionalAdditionsTests" */;
+			buildPhases = (
+				B35A77DF15D6982D0097BF64 /* Sources */,
+				B35A77E015D6982D0097BF64 /* Frameworks */,
+				B35A77E115D6982D0097BF64 /* Resources */,
+				B35A77E215D6982D0097BF64 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TJFunctionalAdditionsTests;
+			productName = TJFunctionalAdditionsTests;
+			productReference = B35A77E415D6982D0097BF64 /* TJFunctionalAdditionsTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B35A77D815D697F20097BF64 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = B35A77DB15D697F20097BF64 /* Build configuration list for PBXProject "TJFunctionalAdditionsTests" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B35A77D615D697F20097BF64;
+			productRefGroup = B35A77E515D6982D0097BF64 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B35A77E315D6982D0097BF64 /* TJFunctionalAdditionsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B35A77E115D6982D0097BF64 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B35A780815D699030097BF64 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B35A77E215D6982D0097BF64 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B35A77DF15D6982D0097BF64 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B35A780E15D699EA0097BF64 /* NSArray+TJFunctionalAdditions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B35A780215D699030097BF64 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B35A780315D699030097BF64 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B35A77DD15D697F20097BF64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		B35A77DE15D697F20097BF64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		B35A77F815D6982E0097BF64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tests/TJFunctionalAdditionsTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Tests/TJFunctionalAdditionsTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		B35A77F915D6982E0097BF64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tests/TJFunctionalAdditionsTests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Tests/TJFunctionalAdditionsTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B35A77DB15D697F20097BF64 /* Build configuration list for PBXProject "TJFunctionalAdditionsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B35A77DD15D697F20097BF64 /* Debug */,
+				B35A77DE15D697F20097BF64 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B35A77F715D6982E0097BF64 /* Build configuration list for PBXNativeTarget "TJFunctionalAdditionsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B35A77F815D6982E0097BF64 /* Debug */,
+				B35A77F915D6982E0097BF64 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B35A77D815D697F20097BF64 /* Project object */;
+}
