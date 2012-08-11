@@ -78,6 +78,22 @@
     STAssertTrue([testArray objectAtIndex:1] == testObject2, @"Should contain object 1");
 }
 
+- (void)testIfEachAllowsTypedArgumentInBlock {
+    __block int blockCount = 0;
+    
+    NSNumber *testObject = [NSNumber numberWithInt:1];
+    NSArray *arrayWithSingleElement = [NSArray arrayWithObject:testObject];
+    
+    [arrayWithSingleElement each:^(NSNumber *element) {
+        blockCount++;
+        
+        STAssertTrue(element == testObject, @"Object passed should be the same as test object");
+        STAssertEquals(1, [element intValue], @"Should be able invoke the method");
+    }];
+    
+    STAssertTrue(blockCount == 1, @"Should have executed the block once.");
+}
+
 #pragma mark - - [NSArray map:] tests
 
 - (void)testIfMapReturnsAnEmptyArrayOnEmptyArray {
