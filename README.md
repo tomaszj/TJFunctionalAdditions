@@ -26,7 +26,7 @@ NSArray *filterResult = [testArray filter:^BOOL(NSNumber *element) {
     return [element intValue] % 2 == 0;
 }];
 
-NSArray *mapResult = [testArray filter:^id(NSString *string) {
+NSArray *mapResult = [testArray map:^id(NSString *string) {
     return [string uppercaseString];
 }];
 
