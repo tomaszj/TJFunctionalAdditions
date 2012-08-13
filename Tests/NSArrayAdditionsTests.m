@@ -245,6 +245,50 @@
     STAssertFalse([resultArray containsObject:number4], @"Should have removed number 4");
 }
 
+#pragma mark - - [NSArray reduce::] tests
+
+- (void)testIfReturnsInitialValueOnEmptyArray {
+    NSObject *initialObject = [NSObject new];
+    
+    NSArray *emptyArray = [NSArray new];
+    
+    id result = [emptyArray reduceWithInitialValue:initialObject withBlock:^id(id currentValue, id element) {
+        return nil;
+    }];
+    
+    STAssertEqualObjects(initialObject, result, @"Should return the same objects");
+}
+
+- (void)testIfAssignsNewValueWithSingleElement {
+    
+    NSObject *testObject = [NSObject new];
+    
+    NSArray *singleElementArray = [NSArray arrayWithObject:testObject];
+    
+    id result = [singleElementArray reduceWithInitialValue:nil withBlock:^id(id currentValue, id element) {
+        return element;
+    }];
+    
+    STAssertEqualObjects(testObject, result, @"Should return the single element");
+}
+
+- (void)testIfWorksWithAllElements {
+    NSNumber *number1 = [NSNumber numberWithInt:1];
+    NSNumber *number2 = [NSNumber numberWithInt:2];
+    NSNumber *number3 = [NSNumber numberWithInt:3];
+    NSNumber *number4 = [NSNumber numberWithInt:4];
+    
+    NSArray *testArray = [NSArray arrayWithObjects:number1, number2, number3, number4, nil];
+    
+    NSNumber *factorial = [testArray reduceWithInitialValue:[NSNumber numberWithInt:1] withBlock:^id(NSNumber *currentValue, NSNumber *element) {
+        
+        int factorial = [currentValue intValue] * [element intValue];
+        return [NSNumber numberWithInt:factorial];
+    }];
+    
+    STAssertEquals(24, [factorial intValue], @"Should return the factorial of 4");
+}
+
 #pragma mark - - [NSArray take:] tests
 - (void)testIfTakeReturnsEmptyArrayOnEmptyArray {
     NSArray *testArray = [NSArray new];

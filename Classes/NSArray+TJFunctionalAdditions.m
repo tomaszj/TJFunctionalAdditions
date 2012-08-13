@@ -61,6 +61,16 @@
     return [self objectsAtIndexes:failingIndexes];
 }
 
+- (id)reduceWithInitialValue:(id)initialValue withBlock:(id(^)(id currentValue, id element))block {
+    __block id blockValue = initialValue;
+    
+    [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        blockValue = block(blockValue, obj);
+    }];
+    
+    return blockValue;
+}
+
 - (NSArray *)take:(NSUInteger)count {
     
     NSUInteger trimmedCount = count <= [self count] ? count : [self count];

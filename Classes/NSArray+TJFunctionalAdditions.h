@@ -61,6 +61,14 @@
 - (NSArray *)reject:(BOOL(^)(id element))testBlock;
 
 /**
+ * Reduces the array to a value, using block for each element with the inital value given.
+ *
+ * @param initialValue used to determine start conditions
+ * @param block applied to each element
+ */
+- (id)reduceWithInitialValue:(id)initialValue withBlock:(id(^)(id currentValue, id element))block;
+
+/**
  * Returns first n elements of the array.
  *
  * @param count of elements to be taken
