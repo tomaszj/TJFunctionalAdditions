@@ -13,6 +13,7 @@ Added to NSArray:
 * map
 * filter
 * reject
+* reduce
 * take
 * last
 * any
@@ -22,17 +23,35 @@ Sample usage
 ------------
 
 ```objective-c
+// Filter
 NSArray *filterResult = [testArray filter:^BOOL(NSNumber *element) {
     return [element intValue] % 2 == 0;
 }];
 
+// Map
 NSArray *mapResult = [testArray map:^id(NSString *string) {
     return [string uppercaseString];
 }];
 
+// Any
 BOOL anyElementGreaterThan = [testArray any:^BOOL(id element) {
     return [element intValue] > 10;
 }];
+
+// Reduce
+NSNumber *number1 = [NSNumber numberWithInt:1];
+NSNumber *number2 = [NSNumber numberWithInt:2];
+NSNumber *number3 = [NSNumber numberWithInt:3];
+NSNumber *number4 = [NSNumber numberWithInt:4];
+
+NSArray *testArray = [NSArray arrayWithObjects:number1, number2, number3, number4, nil];
+
+NSNumber *factorial = [testArray reduceWithInitialValue:[NSNumber numberWithInt:1] withBlock:^id(NSNumber *currentValue, NSNumber *element) {
+    int factorial = [currentValue intValue] * [element intValue];
+    return [NSNumber numberWithInt:factorial];
+}];
+
+
 ```
 
 See more samples in Tests.
