@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B31A0FC315D9D93100B0AB2F /* NSDictionary+TJFunctionalAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B31A0FC215D9D93100B0AB2F /* NSDictionary+TJFunctionalAdditions.m */; };
+		B31A0FC715D9D94000B0AB2F /* NSDictionaryAdditionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B31A0FC615D9D94000B0AB2F /* NSDictionaryAdditionsTests.m */; };
 		B35A77E815D6982D0097BF64 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35A77E715D6982D0097BF64 /* SenTestingKit.framework */; };
 		B35A77EA15D6982D0097BF64 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35A77E915D6982D0097BF64 /* UIKit.framework */; };
 		B35A77EC15D6982D0097BF64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35A77EB15D6982D0097BF64 /* Foundation.framework */; };
@@ -16,6 +18,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B31A0FC115D9D93100B0AB2F /* NSDictionary+TJFunctionalAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+TJFunctionalAdditions.h"; path = "Classes/NSDictionary+TJFunctionalAdditions.h"; sourceTree = "<group>"; };
+		B31A0FC215D9D93100B0AB2F /* NSDictionary+TJFunctionalAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+TJFunctionalAdditions.m"; path = "Classes/NSDictionary+TJFunctionalAdditions.m"; sourceTree = "<group>"; };
+		B31A0FC515D9D94000B0AB2F /* NSDictionaryAdditionsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDictionaryAdditionsTests.h; sourceTree = "<group>"; };
+		B31A0FC615D9D94000B0AB2F /* NSDictionaryAdditionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDictionaryAdditionsTests.m; sourceTree = "<group>"; };
 		B35A77E415D6982D0097BF64 /* TJFunctionalAdditionsTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TJFunctionalAdditionsTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B35A77E715D6982D0097BF64 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		B35A77E915D6982D0097BF64 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -74,9 +80,11 @@
 		B35A780115D699030097BF64 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				B35A780B15D6995C0097BF64 /* Support Files */,
 				B35A781015D69BEE0097BF64 /* NSArrayAdditionsTests.h */,
 				B35A781115D69BEE0097BF64 /* NSArrayAdditionsTests.m */,
+				B31A0FC515D9D94000B0AB2F /* NSDictionaryAdditionsTests.h */,
+				B31A0FC615D9D94000B0AB2F /* NSDictionaryAdditionsTests.m */,
+				B35A780B15D6995C0097BF64 /* Support Files */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -96,6 +104,8 @@
 			children = (
 				B35A780C15D699EA0097BF64 /* NSArray+TJFunctionalAdditions.h */,
 				B35A780D15D699EA0097BF64 /* NSArray+TJFunctionalAdditions.m */,
+				B31A0FC115D9D93100B0AB2F /* NSDictionary+TJFunctionalAdditions.h */,
+				B31A0FC215D9D93100B0AB2F /* NSDictionary+TJFunctionalAdditions.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -180,6 +190,8 @@
 			files = (
 				B35A780E15D699EA0097BF64 /* NSArray+TJFunctionalAdditions.m in Sources */,
 				B35A781215D69BEE0097BF64 /* NSArrayAdditionsTests.m in Sources */,
+				B31A0FC315D9D93100B0AB2F /* NSDictionary+TJFunctionalAdditions.m in Sources */,
+				B31A0FC715D9D94000B0AB2F /* NSDictionaryAdditionsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
