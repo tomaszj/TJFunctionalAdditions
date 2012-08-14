@@ -19,9 +19,13 @@ Added to NSArray:
 * any
 * all
 
+Added to NSDictionary:
+* each
+
 Sample usage
 ------------
 
+**NSArray**
 ```objective-c
 // Filter
 NSArray *filterResult = [testArray filter:^BOOL(NSNumber *element) {
@@ -51,6 +55,14 @@ NSNumber *factorial = [testArray reduceWithInitialValue:[NSNumber numberWithInt:
     return [NSNumber numberWithInt:factorial];
 }];
 
+```
+
+**NSDictionary**
+```objective-c
+// Each
+[dictionary each:^(NSString *key, NSNumber *value) {
+    NSLog(@"There's value %i for key %@!", [value intValue], key);
+}];
 
 ```
 
