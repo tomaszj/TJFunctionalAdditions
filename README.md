@@ -1,6 +1,8 @@
 TJFunctionalAdditions
 =====================
 
+**Note: I've done this as an exercise for myself. For production, I suggest using [Underscore.m](http://underscorem.org/), which I use myself in my projects right now.**
+
 Library simplifying the use of collection iterations through functional constructs like map, select, reject, etc.
 
 They are simply used as categories, without the need for some cumbersome wrappers.
